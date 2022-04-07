@@ -5,6 +5,7 @@ const { getAllTags } = require('../db');
 
 tagsRouter.get('/', async (req, res) => {
     const tags = await getAllTags();
+    console.log('Tags Router Working!')
 
     res.send({
         tags
