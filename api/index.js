@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const { getUserById } = require('../db');
 const { JWT_SECRET } = process.env;
 
+
 apiRouter.use(async (req, res, next) => {
     const prefix = 'Bearer ';
     const auth = req.header('Authorization');
@@ -50,6 +51,14 @@ apiRouter.use('/posts', postsRouter);
 // added tag route
 const tagsRouter = require('./tags');
 apiRouter.use('/tags', tagsRouter);
+
+tagsRouter.get('/', async (req, res) => {
+    const tags = await getAllTags();
+
+    res.send({
+        tags
+     });
+});
 
 apiRouter.use((error, req, res, next) => {
     res.send({

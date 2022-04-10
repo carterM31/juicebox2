@@ -17,7 +17,7 @@ usersRouter.get('/', async (req, res) => {
     });
 });
 
-// Will change inner block after we log teh req body
+// Will change inner block after we log the req body
 usersRouter.post('/login', async (req, res, next) => {
     const { username, password } = req.body;
 
@@ -71,7 +71,7 @@ usersRouter.post('/register', async (req, res, next) => {
         id: user.id, 
         username
       }, process.env.JWT_SECRET, {
-        expiresIn: '1w'
+        expiresIn: '30d'
       });
   
       res.send({ 

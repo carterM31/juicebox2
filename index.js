@@ -20,6 +20,14 @@ server.use((req, res, next) => {
     next();  // pass control to the next middleware function in this stack
 })
 
+server.get('/background/:color', (req, res, next) => {
+    res.send(`
+        <body style="background: ${ req.params.color };">
+            <h1>Hello World</h1>
+        </body>
+    `);
+});
+
 const apiRouter = require('./api');
 server.use('/api', apiRouter);
 
